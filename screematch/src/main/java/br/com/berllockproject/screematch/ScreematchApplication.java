@@ -1,5 +1,6 @@
 package br.com.berllockproject.screematch;
 
+import br.com.berllockproject.screematch.model.DadosEpisodio;
 import br.com.berllockproject.screematch.model.DadosSerie;
 import br.com.berllockproject.screematch.service.ConsumoApi;
 import br.com.berllockproject.screematch.service.ConverteDados;
@@ -22,5 +23,8 @@ public class ScreematchApplication implements CommandLineRunner {
 		ConverteDados conversor = new ConverteDados();
 		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
 		System.out.println(dados);
+		json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=a829c87d");
+		DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
 	}
 }
